@@ -22,7 +22,7 @@ cd repository
 pip install -r requirements.txt
 
 
-### **Formatting Basics**
+**Formatting Basics**
 
 #### **Headings**
 Use `#` for headings:
