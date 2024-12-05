@@ -1,5 +1,5 @@
 #!/bin/bash --login
-#$ -pe smp.pe 8
+#$ -pe smp.pe 4
 #$ -j y
 #$ -o /mnt/jw01-aruk-home01/projects/oa_functional_genomics/projects/CUT_Tag/analyses/processing_pipeline/logs
 

@@ -45,7 +45,7 @@ def compute_matrix_and_plot(Configuration):
     bigwig_dir = os.path.join(Configuration.bigwig_dir)
     heatmap_dir = os.path.join(Configuration.heatmap_dir)
     matrix_file = os.path.join(heatmap_dir, 'matrix_gene.mat')
-    plot_file = os.path.join(heatmap_dir, 'Histone_gene.png')
+    plot_file = os.path.join(heatmap_dir, f"{Configuration.file_to_process}_histone_gene.png")
     
     os.makedirs(heatmap_dir, exist_ok=True)
 
@@ -61,7 +61,7 @@ def compute_matrix_and_plot(Configuration):
         "computeMatrix", "scale-regions",
         "-S", bw_file, "-R", regions_file,
         "--beforeRegionStartLength", "3000", "--regionBodyLength", "5000", "--afterRegionStartLength", "3000",
-        "--skipZeros", "-o", matrix_file, "-p", "8"
+        "--skipZeros", "-o", matrix_file, "-p", "4"
     ], check=True)
 
     # Run plotHeatmap to generate the heatmap from the matrix
@@ -85,7 +85,7 @@ def generate_summit_regions_and_compute_matrix(Configuration):
 
     # Define output matrix and BigWig file paths
     bigwig_file = os.path.join(bigwig_dir, f"{Configuration.file_to_process}_raw.bw")
-    matrix_file = os.path.join(Configuration.matrix, f"{Configuration.file_to_process}_macs2.mat")
+    matrix_file = os.path.join(Configuration.heatmap_dir, f"{Configuration.file_to_process}_macs2.mat")
     
     # Use the summit file directly for computeMatrix
     # Here we assume that the summits file is in BED format with the format: chrom start end name score
@@ -96,11 +96,11 @@ def generate_summit_regions_and_compute_matrix(Configuration):
     subprocess.run([
         "computeMatrix", "reference-point", 
         "-S", bigwig_file, "-R", summit_file, 
-        "--skipZeros", "-o", matrix_file, "-p", "8", "-a", "3000", "-b", "3000", "--referencePoint", "center"
+        "--skipZeros", "-o", matrix_file, "-p", "4", "-a", "3000", "-b", "3000", "--referencePoint", "center"
     ], check=True)
 
     # Run plotHeatmap for the generated matrix
-    plot_file = os.path.join(Configuration.matrix, f"{Configuration.file_to_process}_macs2_narrowpeak_heatmap.png")
+    plot_file = os.path.join(Configuration.heatmap_dir, f"{Configuration.file_to_process}_macs2_narrowpeak_heatmap.png")
     logging.info(f"Generating heatmap for summit regions: {plot_file}")
     subprocess.run([
         "plotHeatmap", "-m", matrix_file,
