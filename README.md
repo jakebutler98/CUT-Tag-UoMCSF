@@ -3,7 +3,16 @@
 INSERT: brief description of your project, what it does, and why it's useful.
  
 ---
- 
+
+# Table of Contents
+- [Project Title](#project-title)
+- [Installation](#example-installation-commands)
+- [Formatting Basics](#formatting-basics)
+  - [Headings](#headings)
+  - [Bold and Italics](#bold
+
+---
+
  ## Example Installation Commands
  
 ```bash
