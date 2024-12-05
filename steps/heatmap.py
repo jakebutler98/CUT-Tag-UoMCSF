@@ -47,7 +47,7 @@ def compute_matrix_and_plot(Configuration):
     matrix_file = os.path.join(heatmap_dir, 'matrix_gene.mat')
     plot_file = os.path.join(heatmap_dir, 'Histone_gene.png')
     
-    os.makedirs(heatmap_dir, exist_ok=TRUE)
+    os.makedirs(heatmap_dir, exist_ok=True)
 
     # Define BigWig input files for different histone marks (adjust as necessary)
     bw_file = os.path.join(bigwig_dir, f"{Configuration.file_to_process}_raw.bw")
