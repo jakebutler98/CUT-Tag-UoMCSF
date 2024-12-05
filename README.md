@@ -9,7 +9,7 @@ INSERT: brief description of your project, what it does, and why it's useful.
 - [Installation](#example-installation-commands)
 - [Formatting Basics](#formatting-basics)
   - [Headings](#headings)
-  - [Bold and Italics](#bold
+  - [Bold and Italics](#bold)
 
 ---
 
